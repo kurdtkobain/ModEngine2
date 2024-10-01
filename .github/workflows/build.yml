@@ -31,12 +31,12 @@ jobs:
       VCPKG_ROOT: ${{ github.workspace }}/vcpkg
 
     steps:
-      - uses: actions/checkout@vlatest
+      - uses: actions/checkout@v4.2.0
         with:
           submodules: true
           path: src_repo
 
-      - uses: actions/checkout@vlatest
+      - uses: actions/checkout@v4.2.0
         with:
           repository: 'microsoft/vcpkg'
           path: vcpkg
@@ -47,7 +47,7 @@ jobs:
       - uses: lukka/get-cmake@latest
       # Restore both vcpkg and its artifacts from the GitHub cache service.
       - name: Restore vcpkg and its artifacts.
-        uses: actions/cache@vlatest
+        uses: actions/cache@v4.0.2
         with:
           # The first path is where vcpkg generates artifacts while consuming the vcpkg.json manifest file.
           # The second path is the location of vcpkg (it contains the vcpkg executable and data files).
@@ -67,7 +67,7 @@ jobs:
         run: find $RUNNER_WORKSPACE
         shell: bash
       # On Windows runners, let's ensure to have the Developer Command Prompt environment setup correctly. As used here the Developer Command Prompt created is targeting x64 and using the default the Windows SDK.
-      - uses: ilammy/msvc-dev-cmd@v1
+      - uses: ilammy/msvc-dev-cmd@v1.13.0
       # Run CMake to generate Ninja project files, using the vcpkg's toolchain file to resolve and install the dependencies as specified in vcpkg.json.
 
       - name: Download ScyllaHide
@@ -95,7 +95,7 @@ jobs:
         shell: bash
 
       - name: 'Upload artifacts'
-        uses: actions/upload-artifact@vlatest
+        uses: actions/upload-artifact@v3.2.1-node20
         with:
           name: 'modengine-${{ github.sha }}'
           path: '${{ env.CMAKE_BUILD_DIR }}/ModEngine-*-win64.*' # FIXME gtierney: run-cmake isn't respecting CMAKE_INSTALL_PREFIX
