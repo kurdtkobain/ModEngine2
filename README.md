@@ -1,4 +1,8 @@
+
 # Mod Engine 2
+
+> [!IMPORTANT]
+> Development on Mod Engine 2 is discontinued. Any future work will be done on [me3](https://github.com/garyttierney/me3).
 
 Mod Engine 2 is a ground up rewrite of Mod Engine, a runtime code patching and injection library used for adding modding functionality to the Souls games by FROM Software.
 
@@ -13,12 +17,13 @@ Mod Engine 2 is a ground up rewrite of Mod Engine, a runtime code patching and i
 1. Download the latest [release](https://github.com/soulsmods/ModEngine2/releases).
 2. Create a folder in the mod folder, I recommend the name of the mod for clarity.
 3. Unpack the mod into the just created folder.
-4. Edit the `eldenring_config.toml` (or your game of choice) to include the folder you just created.
+4. Edit the `config_eldenring.toml` (or your game of choice) to include the folder you just created.
 
 ```toml
 mods = [
-  { enabled = true, name = "default", path = "mod\\testmodName" },
-  { enabled = false, name = "default", path = "mod\\disabledTestmodName" },
+  { enabled = true, name = "BetterAshes ", path = "mod\\ashes" },
+  { enabled = true, name = "CleversMoveset", path = "mod\\moveset" },
+  { enabled = false, name = "EnemyRandomizer", path = "mod\\randomizer" },
 ]
 ```
 
